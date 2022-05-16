@@ -1,5 +1,7 @@
 package main
 
+import "GoRss2Webhook/config"
+
 func main() {
-	println("Hello, world!")
+	config.InitLog()
 }

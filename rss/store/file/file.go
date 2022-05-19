@@ -12,11 +12,11 @@ import (
 type fileStore struct {
 	storePath string
 	fileName  string
-	data      []string
+	data      []store.FeedSubscriber
 }
 
 func Init(storePath, fileName, saveCron string) store.FeedStore {
-	data := make([]string, 0)
+	data := make([]store.FeedSubscriber, 0)
 	bytes, err := readFile(storePath, fileName)
 	if err != nil {
 		logrus.Warnf(`read file error: %s`, err.Error())
@@ -81,18 +81,18 @@ func writeFile(parent, fileName string, content []byte) error {
 	return err
 }
 
-func (store *fileStore) Save(feedUrl string) error {
-	store.data = append(store.data, feedUrl)
+func (store *fileStore) Save(subscriber store.FeedSubscriber) error {
+	store.data = append(store.data, subscriber)
 	return nil
 }
 
-func (store *fileStore) GetAll() ([]string, error) {
+func (store *fileStore) GetAll() ([]store.FeedSubscriber, error) {
 	return store.data, nil
 }
 
 func (store *fileStore) Delete(feedUrl string) error {
-	for i, url := range store.data {
-		if url == feedUrl {
+	for i, subscriber := range store.data {
+		if subscriber.FeedUrl == feedUrl {
 			store.data = append(store.data[:i], store.data[i+1:]...)
 			return nil
 		}

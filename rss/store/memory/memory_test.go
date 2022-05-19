@@ -1,10 +1,18 @@
 package memory
 
-import "testing"
+import (
+	store2 "GoRss2Webhook/rss/store"
+	"testing"
+)
 
 func TestMemory(t *testing.T) {
 	store := Init()
-	err := store.Save("http")
+	subscriber := store2.FeedSubscriber{
+		FeedUrl:   "http",
+		UserAgent: "",
+		ProxyUrl:  "",
+	}
+	err := store.Save(subscriber)
 	if err != nil {
 		t.Error(err)
 	}
@@ -15,7 +23,7 @@ func TestMemory(t *testing.T) {
 	if len(all) != 1 {
 		t.Error("Expected 1, got ", len(all))
 	}
-	if all[0] != "http" {
+	if all[0].FeedUrl != "http" {
 		t.Error("Expected http, got ", all[0])
 	}
 	err = store.Delete("http")
@@ -29,7 +37,12 @@ func TestMemory(t *testing.T) {
 	if len(all) != 0 {
 		t.Error("Expected 0, got ", len(all))
 	}
-	err = store.Save("https")
+	subscriber = store2.FeedSubscriber{
+		FeedUrl:   "https",
+		UserAgent: "",
+		ProxyUrl:  "",
+	}
+	err = store.Save(subscriber)
 	if err != nil {
 		t.Error(err)
 	}
@@ -40,7 +53,7 @@ func TestMemory(t *testing.T) {
 	if len(all) != 1 {
 		t.Error("Expected 1, got ", len(all))
 	}
-	if all[0] != "https" {
+	if all[0].FeedUrl != "https" {
 		t.Error("Expected https, got ", all[0])
 	}
 }

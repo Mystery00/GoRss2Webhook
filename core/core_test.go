@@ -1,9 +1,9 @@
 package core
 
 import (
-	"GoRss2Webhook/rss/store"
-	rss "GoRss2Webhook/rss/store/memory"
-	feed "GoRss2Webhook/store/memory"
+	"GoRss2Webhook/feed/store"
+	feed "GoRss2Webhook/feed/store/memory"
+	rss "GoRss2Webhook/store/memory"
 	"GoRss2Webhook/webhook/store/memory"
 	"github.com/sirupsen/logrus"
 	"testing"
@@ -13,8 +13,8 @@ import (
 func TestDoWork(t *testing.T) {
 	logrus.SetLevel(logrus.DebugLevel)
 
-	feedStore := rss.Init()
-	rssStore := feed.Init()
+	feedStore := feed.Init()
+	rssStore := rss.Init()
 	webhookStore := memory.Init()
 
 	subscriber := store.FeedSubscriber{

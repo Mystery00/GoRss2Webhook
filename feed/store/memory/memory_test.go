@@ -1,7 +1,7 @@
 package memory
 
 import (
-	store2 "GoRss2Webhook/rss/store"
+	store2 "GoRss2Webhook/feed/store"
 	"testing"
 )
 

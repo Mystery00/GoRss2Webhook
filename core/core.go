@@ -1,8 +1,8 @@
 package core
 
 import (
-	"GoRss2Webhook/rss/fetch"
-	feed "GoRss2Webhook/rss/store"
+	"GoRss2Webhook/feed/fetch"
+	feed "GoRss2Webhook/feed/store"
 	rss "GoRss2Webhook/store"
 	"GoRss2Webhook/webhook"
 	"GoRss2Webhook/webhook/store"

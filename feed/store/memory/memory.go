@@ -1,7 +1,7 @@
 package memory
 
 import (
-	"GoRss2Webhook/rss/store"
+	"GoRss2Webhook/feed/store"
 )
 
 type memoryStore struct {

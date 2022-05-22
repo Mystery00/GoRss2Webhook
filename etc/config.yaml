@@ -1,0 +1,48 @@
+log:
+  home: "logs"
+  file: "go-rss2webhook.log"
+  color: true
+  local: true
+
+cron:
+  enable: true
+
+store:
+  # RSS订阅信息存储配置
+  feed:
+    # 将数据存储到 内存[memory] 文件系统[file] 配置文件[viper]
+    type: "memory"
+    # 文件系统配置
+    file:
+      # 文件存储路径
+      path: "/tmp/GoRss2Webhook/feed_store"
+      # 文件名称
+      name: "feed.json"
+    # viper配置
+    viper:
+  # RSS历史记录存储配置
+  rss:
+    type: "memory"
+    # 文件系统配置
+    file:
+      # 文件存储父级目录，每一个RSS订阅一个文件夹，里面放的是每一次订阅的信息
+      path: "/tmp/GoRss2Webhook/rss_store"
+  # Webhook配置
+  webhook:
+    type: "memory"
+    # 文件系统配置
+    file:
+      # 文件存储路径
+      path: "/tmp/GoRss2Webhook/webhook_store"
+      # 文件名称
+      name: "webhook.json"
+    # viper配置
+    viper:
+
+webhook:
+  http:
+    enable: true
+  tgbot:
+    enable: false
+  qwbot:
+    enable: false

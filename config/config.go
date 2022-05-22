@@ -10,7 +10,7 @@ import (
 func init() {
 	configHome, exist := os.LookupEnv(EnvConfigHome)
 	if !exist {
-		//不存在环境变量，尝试取可执行文件目录下的config目录
+		//不存在环境变量，尝试取可执行文件目录下的etc目录
 		configHome = "etc"
 	}
 	//判断配置文件目录是否存在

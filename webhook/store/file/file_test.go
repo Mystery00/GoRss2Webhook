@@ -7,7 +7,7 @@ import (
 )
 
 func TestFile(t *testing.T) {
-	storePath := `/tmp/GoRss2Webhook/webhook`
+	storePath := `/tmp/GoRss2Webhook/webhook_store`
 	store := Init(storePath, `webhook.json`)
 	webhook := store3.Webhook{
 		SubscribeUrl: "http",

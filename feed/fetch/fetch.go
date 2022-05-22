@@ -1,7 +1,7 @@
 package fetch
 
 import (
-	"GoRss2Webhook/rss/store"
+	"GoRss2Webhook/feed/store"
 	"github.com/mmcdole/gofeed"
 	"github.com/sirupsen/logrus"
 	"net/http"

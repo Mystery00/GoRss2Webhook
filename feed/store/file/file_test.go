@@ -1,14 +1,14 @@
 package file
 
 import (
-	store2 "GoRss2Webhook/rss/store"
+	store2 "GoRss2Webhook/feed/store"
 	"os"
 	"testing"
 )
 
 func TestFile(t *testing.T) {
-	storePath := `/tmp/GoRss2Webhook/rss`
-	store := Init(storePath, `rss.json`)
+	storePath := `/tmp/GoRss2Webhook/feed_store`
+	store := Init(storePath, `feed.json`)
 	subscriber := store2.FeedSubscriber{
 		FeedUrl:   "http",
 		UserAgent: "",

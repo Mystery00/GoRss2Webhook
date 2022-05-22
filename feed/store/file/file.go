@@ -1,7 +1,7 @@
 package file
 
 import (
-	"GoRss2Webhook/rss/store"
+	"GoRss2Webhook/feed/store"
 	"GoRss2Webhook/utils/file"
 	"github.com/sirupsen/logrus"
 )

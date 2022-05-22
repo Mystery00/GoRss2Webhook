@@ -10,12 +10,12 @@ type FeedSubscriber struct {
 }
 
 type FeedStore interface {
-	// Save 保存订阅信息
-	Save(subscriber FeedSubscriber) error
+	// Subscribe 订阅信息
+	Subscribe(subscriber FeedSubscriber) error
 
 	// GetAll 获取订阅信息
 	GetAll() ([]FeedSubscriber, error)
 
-	// Delete 删除订阅信息
-	Delete(feedUrl string) error
+	// Unsubscribe 取消订阅信息
+	Unsubscribe(feedUrl string) error
 }

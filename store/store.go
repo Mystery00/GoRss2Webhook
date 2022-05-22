@@ -17,9 +17,3 @@ type RssStore interface {
 	// Clear 清空历史记录
 	Clear() error
 }
-
-var rssStore *RssStore
-
-func SetRssStore(store *RssStore) {
-	rssStore = store
-}

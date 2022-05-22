@@ -12,7 +12,7 @@ func TestMemory(t *testing.T) {
 		UserAgent: "",
 		ProxyUrl:  "",
 	}
-	err := store.Save(subscriber)
+	err := store.Subscribe(subscriber)
 	if err != nil {
 		t.Error(err)
 	}
@@ -26,7 +26,7 @@ func TestMemory(t *testing.T) {
 	if all[0].FeedUrl != "http" {
 		t.Error("Expected http, got ", all[0])
 	}
-	err = store.Delete("http")
+	err = store.Unsubscribe("http")
 	if err != nil {
 		t.Error(err)
 	}
@@ -42,7 +42,7 @@ func TestMemory(t *testing.T) {
 		UserAgent: "",
 		ProxyUrl:  "",
 	}
-	err = store.Save(subscriber)
+	err = store.Subscribe(subscriber)
 	if err != nil {
 		t.Error(err)
 	}

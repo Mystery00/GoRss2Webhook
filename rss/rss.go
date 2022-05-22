@@ -8,12 +8,12 @@ func SetFeedStore(store *store.FeedStore) {
 	feedStore = store
 }
 
-func Subscribe(feedUrl string) error {
+func Subscribe(subscriber store.FeedSubscriber) error {
 	s := *feedStore
-	return s.Save(feedUrl)
+	return s.Subscribe(subscriber)
 }
 
 func Unsubscribe(feedUrl string) error {
 	s := *feedStore
-	return s.Delete(feedUrl)
+	return s.Unsubscribe(feedUrl)
 }

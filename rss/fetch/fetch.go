@@ -3,6 +3,7 @@ package fetch
 import (
 	"GoRss2Webhook/rss/store"
 	"github.com/mmcdole/gofeed"
+	"github.com/sirupsen/logrus"
 	"net/http"
 	"net/url"
 	"time"
@@ -16,6 +17,7 @@ type ParserClient struct {
 
 func Parse(subscriber store.FeedSubscriber) (*gofeed.Feed, error) {
 	parserClient := getClient(subscriber)
+	logrus.Debugf(`start load rss [%s]`, subscriber.FeedUrl)
 	feed, err := parserClient.ParseURL(subscriber.FeedUrl)
 	return feed, err
 }

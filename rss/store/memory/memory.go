@@ -16,7 +16,7 @@ func Init() store.FeedStore {
 	return rssStore
 }
 
-func (store *memoryStore) Save(subscriber store.FeedSubscriber) error {
+func (store *memoryStore) Subscribe(subscriber store.FeedSubscriber) error {
 	store.data = append(store.data, subscriber)
 	return nil
 }
@@ -25,7 +25,7 @@ func (store *memoryStore) GetAll() ([]store.FeedSubscriber, error) {
 	return store.data, nil
 }
 
-func (store *memoryStore) Delete(feedUrl string) error {
+func (store *memoryStore) Unsubscribe(feedUrl string) error {
 	for i, subscriber := range store.data {
 		if subscriber.FeedUrl == feedUrl {
 			store.data = append(store.data[:i], store.data[i+1:]...)

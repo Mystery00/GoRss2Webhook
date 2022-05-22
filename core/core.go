@@ -1,15 +1,40 @@
 package core
 
 import (
+	"GoRss2Webhook/config"
 	"GoRss2Webhook/feed/fetch"
 	feed "GoRss2Webhook/feed/store"
 	rss "GoRss2Webhook/store"
 	"GoRss2Webhook/webhook"
 	"GoRss2Webhook/webhook/store"
+	"github.com/robfig/cron/v3"
 	"github.com/sirupsen/logrus"
+	"github.com/spf13/viper"
+	"log"
 )
 
-func DoWork(feedStore feed.FeedStore, rssStore rss.RssStore, webhookStore store.WebhookStore) {
+var feedStore *feed.FeedStore
+var rssStore *rss.RssStore
+var webhookStore *store.WebhookStore
+
+func Init() {
+	feedStore = getFeedStore()
+	rssStore = getRssStore()
+	webhookStore = getWebhookStore()
+	if viper.GetBool(config.CronEnable) {
+		crontab := viper.GetString(config.CronTab)
+		//注册定时任务
+		c := cron.New(cron.WithSeconds(), cron.WithChain(cron.Recover(CronLogger{logrus.StandardLogger()})))
+		_, err := c.AddFunc(crontab, func() {
+			doWork(*feedStore, *rssStore, *webhookStore)
+		})
+		if err != nil {
+			log.Fatal(`register cron failed`, err)
+		}
+	}
+}
+
+func doWork(feedStore feed.FeedStore, rssStore rss.RssStore, webhookStore store.WebhookStore) {
 	subscribers, err := feedStore.GetAll()
 	if err != nil {
 		panic(err)

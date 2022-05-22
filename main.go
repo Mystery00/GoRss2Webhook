@@ -2,6 +2,7 @@ package main
 
 import (
 	"GoRss2Webhook/config"
+	"GoRss2Webhook/core"
 	"GoRss2Webhook/web/handler"
 	"GoRss2Webhook/web/middleware"
 	"context"
@@ -30,6 +31,8 @@ func main() {
 	router := gin.New()
 	middleware.SetMiddleware(router)
 	handler.Handle(router)
+
+	core.Init()
 
 	srv := &http.Server{
 		Addr:    fmt.Sprintf(`:%s`, runPort),

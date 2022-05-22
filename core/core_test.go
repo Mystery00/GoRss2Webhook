@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-func TestDoWork(t *testing.T) {
+func Test_doWork(t *testing.T) {
 	logrus.SetLevel(logrus.DebugLevel)
 
 	feedStore := feed.Init()
@@ -24,7 +24,7 @@ func TestDoWork(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	DoWork(feedStore, rssStore, webhookStore)
-	DoWork(feedStore, rssStore, webhookStore)
+	doWork(feedStore, rssStore, webhookStore)
+	doWork(feedStore, rssStore, webhookStore)
 	time.Sleep(time.Minute)
 }

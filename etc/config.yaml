@@ -6,6 +6,7 @@ log:
 
 cron:
   enable: true
+  tab: "0 * * * * ?"
 
 store:
   # RSS订阅信息存储配置

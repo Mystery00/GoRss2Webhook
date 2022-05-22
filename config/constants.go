@@ -15,8 +15,5 @@ const (
 
 const (
 	CronEnable = "cron.enable"
-)
-
-const (
-	StoreFeedType = "store.feed.type"
+	CronTab    = "cron.tab"
 )

@@ -1,21 +1,9 @@
 package store
 
-import (
-	"time"
-)
-
 type Webhook struct {
 	SubscribeUrl string
-	Http         Http
-	ProxyUrl     string
-	Timeout      time.Duration
-}
-
-type Http struct {
-	Url    string
-	Method string
-	Body   string
-	Header map[string]string
+	Type         int8
+	MetaData     string
 }
 
 type WebhookStore interface {

@@ -24,6 +24,21 @@ func Write(parent, fileName string, data interface{}) error {
 	return writeFile(parent, fileName, bytes)
 }
 
+func CheckOrTouch(parent, fileName string) error {
+	if !Exists(parent) {
+		err := os.MkdirAll(parent, os.ModePerm)
+		if err != nil {
+			return err
+		}
+	}
+	filePath := parent + "/" + fileName
+	if !Exists(filePath) {
+		err := ioutil.WriteFile(filePath, []byte(""), 0644)
+		return err
+	}
+	return nil
+}
+
 // Hash 散列名称
 func Hash(s string) string {
 	h := sha512.New()
@@ -34,7 +49,7 @@ func Hash(s string) string {
 // 读取文件
 func readFile(storePath, fileName string) ([]byte, error) {
 	filePath := storePath + "/" + fileName
-	if !exists(filePath) {
+	if !Exists(filePath) {
 		return nil, nil
 	}
 	bytes, err := ioutil.ReadFile(filePath)
@@ -55,7 +70,7 @@ func writeFile(parent, fileName string, content []byte) error {
 	return err
 }
 
-func exists(path string) bool {
+func Exists(path string) bool {
 	//获取文件信息
 	_, err := os.Stat(path)
 	if err != nil {

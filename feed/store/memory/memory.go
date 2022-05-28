@@ -9,11 +9,11 @@ type memoryStore struct {
 }
 
 func Init() store.FeedStore {
-	var rssStore store.FeedStore
-	rssStore = &memoryStore{
+	var feedStore store.FeedStore
+	feedStore = &memoryStore{
 		data: make([]store.FeedSubscriber, 0),
 	}
-	return rssStore
+	return feedStore
 }
 
 func (store *memoryStore) Subscribe(subscriber store.FeedSubscriber) error {

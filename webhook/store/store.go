@@ -1,14 +1,13 @@
 package store
 
 type Webhook struct {
-	SubscribeUrl string
-	Type         int8
-	MetaData     string
+	Type     int8   `mapstructure:"type"`
+	MetaData string `mapstructure:"metaData"`
 }
 
 type WebhookStore interface {
 	// Save 保存Webhook信息
-	Save(webhook Webhook) error
+	Save(feedUrl string, webhook Webhook) error
 
 	// GetAll 获取Webhook信息
 	GetAll(feedUrl string) ([]Webhook, error)

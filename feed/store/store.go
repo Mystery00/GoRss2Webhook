@@ -3,10 +3,10 @@ package store
 import "time"
 
 type FeedSubscriber struct {
-	FeedUrl   string
-	UserAgent string
-	ProxyUrl  string
-	Timeout   time.Duration
+	FeedUrl   string        `mapstructure:"feedUrl"`
+	UserAgent string        `mapstructure:"userAgent"`
+	ProxyUrl  string        `mapstructure:"proxyUrl"`
+	Timeout   time.Duration `mapstructure:"timeout"`
 }
 
 type FeedStore interface {

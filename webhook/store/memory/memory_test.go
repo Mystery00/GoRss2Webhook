@@ -7,10 +7,8 @@ import (
 
 func TestMemory(t *testing.T) {
 	store := Init()
-	webhook := store3.Webhook{
-		SubscribeUrl: "http",
-	}
-	err := store.Save(webhook)
+	webhook := store3.Webhook{}
+	err := store.Save("http", webhook)
 	if err != nil {
 		t.Error(err)
 	}
@@ -32,10 +30,8 @@ func TestMemory(t *testing.T) {
 	if len(all) != 0 {
 		t.Error("Expected 0, got ", len(all))
 	}
-	webhook = store3.Webhook{
-		SubscribeUrl: "https",
-	}
-	err = store.Save(webhook)
+	webhook = store3.Webhook{}
+	err = store.Save("https", webhook)
 	if err != nil {
 		t.Error(err)
 	}

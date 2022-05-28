@@ -12,18 +12,14 @@ func getRssStore() *store.RssStore {
 	switch feedType {
 	case "memory":
 		{
-			feedStore := memory.Init()
-			return &feedStore
+			rssStore := memory.Init()
+			return &rssStore
 		}
 	case "file":
 		{
 			storePath := viper.GetString(StoreRssFilePath)
-			feedStore := file.Init(storePath)
-			return &feedStore
-		}
-	case "viper":
-		{
-
+			rssStore := file.Init(storePath)
+			return &rssStore
 		}
 	}
 	feedStore := memory.Init()

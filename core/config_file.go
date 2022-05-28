@@ -5,6 +5,10 @@ const (
 
 	StoreFeedFilePath = "store.feed.file.path"
 	StoreFeedFileName = "store.feed.file.name"
+
+	StoreFeedViperPath = "store.feed.viper.path"
+	StoreFeedViperName = "store.feed.viper.name"
+	StoreFeedViperType = "store.feed.viper.type"
 )
 
 const (
@@ -18,4 +22,8 @@ const (
 
 	StoreWebhookFilePath = "store.webhook.file.path"
 	StoreWebhookFileName = "store.webhook.file.name"
+
+	StoreWebhookViperPath = "store.webhook.viper.path"
+	StoreWebhookViperName = "store.webhook.viper.name"
+	StoreWebhookViperType = "store.webhook.viper.type"
 )

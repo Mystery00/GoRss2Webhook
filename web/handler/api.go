@@ -2,6 +2,6 @@ package handler
 
 const (
 	apiPath      = "/api/rest"
-	serverPath   = apiPath + "/rss2webhook/ext"
-	internalPath = serverPath + "/internal"
+	serverPath   = apiPath + "/rss2webhook"
+	externalPath = serverPath + "/external"
 )

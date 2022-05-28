@@ -17,6 +17,14 @@ var feedStore *feed.FeedStore
 var rssStore *rss.RssStore
 var webhookStore *store.WebhookStore
 
+func FeedStore() *feed.FeedStore {
+	return feedStore
+}
+
+func WebhookStore() *store.WebhookStore {
+	return webhookStore
+}
+
 func Init() {
 	feedStore = getFeedStore()
 	rssStore = getRssStore()
@@ -32,6 +40,10 @@ func Init() {
 			log.Fatal(`register cron failed`, err)
 		}
 	}
+}
+
+func DoWork() {
+	doWork(*feedStore, *rssStore, *webhookStore)
 }
 
 func doWork(feedStore feed.FeedStore, rssStore rss.RssStore, webhookStore store.WebhookStore) {

@@ -12,15 +12,18 @@ store:
   # RSS订阅信息存储配置
   feed:
     # 将数据存储到 内存[memory] 文件系统[file] 配置文件[viper]
-    type: "memory"
+    type: "viper"
     # 文件系统配置
     file:
       # 文件存储路径
-      path: "/tmp/GoRss2Webhook/feed_store"
+      path: "/tmp/GoRss2Webhook/data"
       # 文件名称
       name: "feed.json"
     # viper配置
     viper:
+      path: "/tmp/GoRss2Webhook/data"
+      name: "feed"
+      type: "yaml"
   # RSS历史记录存储配置
   rss:
     type: "memory"
@@ -30,16 +33,18 @@ store:
       path: "/tmp/GoRss2Webhook/rss_store"
   # Webhook配置
   webhook:
-    type: "memory"
+    type: "viper"
     # 文件系统配置
     file:
       # 文件存储路径
-      path: "/tmp/GoRss2Webhook/webhook_store"
+      path: "/tmp/GoRss2Webhook/data"
       # 文件名称
       name: "webhook.json"
     # viper配置
     viper:
-
+      path: "/tmp/GoRss2Webhook/data"
+      name: "webhook"
+      type: "yaml"
 webhook:
   http:
     enable: true

@@ -1,4 +1,4 @@
-package wecomBot
+package telegramBot
 
 import (
 	"GoRss2Webhook/feed/fetch"

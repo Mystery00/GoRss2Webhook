@@ -1,4 +1,4 @@
-package wecomBot
+package telegramBot
 
 import (
 	"GoRss2Webhook/webhook/action/http"
@@ -32,7 +32,7 @@ func (a TelegramBotAction) DoWebhook(metaData string, item gofeed.Item) {
 func (a TelegramBotAction) DoSend(w TelegramBot, item gofeed.Item) {
 	host := `https://api.telegram.org`
 	if w.Host != "" {
-		host = `https://api.telegram.org`
+		host = w.Host
 	}
 	u := fmt.Sprintf(`%s/bot%s/sendMessage`, host, w.BotToken)
 	header := make(map[string]string, 1)

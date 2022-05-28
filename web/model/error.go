@@ -10,7 +10,7 @@ type ErrorMessage struct {
 
 func (message ErrorMessage) Json() gin.H {
 	return gin.H{
-		"code":    message.Code,
-		"message": message.Message,
+		"code": message.Code,
+		"msg":  message.Message,
 	}
 }

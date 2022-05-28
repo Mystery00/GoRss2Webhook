@@ -28,8 +28,8 @@ func Init(storePath, fileName string) store.WebhookStore {
 	return webhookStore
 }
 
-func (store *fileStore) Save(webhook store.Webhook) error {
-	key := file.Hash(webhook.SubscribeUrl)
+func (store *fileStore) Save(feedUrl string, webhook store.Webhook) error {
+	key := file.Hash(feedUrl)
 	store.data[key] = append(store.data[key], webhook)
 	return file.Write(store.storePath, store.fileName, store.data)
 }

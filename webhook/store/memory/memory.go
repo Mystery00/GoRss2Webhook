@@ -17,8 +17,8 @@ func Init() store.WebhookStore {
 	return webhookStore
 }
 
-func (store *memoryStore) Save(webhook store.Webhook) error {
-	key := file.Hash(webhook.SubscribeUrl)
+func (store *memoryStore) Save(feedUrl string, webhook store.Webhook) error {
+	key := file.Hash(feedUrl)
 	store.data[key] = append(store.data[key], webhook)
 	return nil
 }

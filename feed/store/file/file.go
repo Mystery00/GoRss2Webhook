@@ -18,14 +18,14 @@ func Init(storePath, fileName string) store.FeedStore {
 	if err != nil {
 		logrus.Warnf(`read file error: %s`, err.Error())
 	}
-	var rssStore store.FeedStore
+	var feedStore store.FeedStore
 	fileStore := &fileStore{
 		storePath: storePath,
 		fileName:  fileName,
 		data:      data,
 	}
-	rssStore = fileStore
-	return rssStore
+	feedStore = fileStore
+	return feedStore
 }
 
 func (store *fileStore) Subscribe(subscriber store.FeedSubscriber) error {

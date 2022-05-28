@@ -44,8 +44,8 @@ func Init(storePath, fileName, configType string) store.FeedStore {
 }
 
 func (store *confStore) Subscribe(subscriber store.FeedSubscriber) error {
-	for i, subscriber := range store.data.Subscriber {
-		if subscriber.FeedUrl == subscriber.FeedUrl {
+	for i, old := range store.data.Subscriber {
+		if old.FeedUrl == subscriber.FeedUrl {
 			store.data.Subscriber = append(store.data.Subscriber[:i], store.data.Subscriber[i+1:]...)
 			break
 		}

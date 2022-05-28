@@ -95,6 +95,9 @@ func (store *confStore) Save(feedUrl string, webhook store.Webhook) error {
 
 func (store *confStore) GetAll(feedUrl string) ([]store.Webhook, error) {
 	u := hash(feedUrl)
+	if feedUrl == "common" {
+		u = feedUrl
+	}
 	return store.data[u], nil
 }
 

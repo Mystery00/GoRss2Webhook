@@ -76,6 +76,12 @@ func doWork(feedStore feed.FeedStore, rssStore rss.RssStore, webhookStore store.
 					if err != nil {
 						logrus.Panicf(`get webhook list [%s] failed`, subscriber.FeedUrl)
 					}
+					if len(webhooks) == 0 {
+						webhooks, err = webhookStore.GetAll("common")
+						if err != nil {
+							logrus.Panicf(`get webhook list [%s] failed`, subscriber.FeedUrl)
+						}
+					}
 					for _, w := range webhooks {
 						logrus.Debugf(`do webhook %s`, w)
 						webhook.DoWebhook(w, *item)

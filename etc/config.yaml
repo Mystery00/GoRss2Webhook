@@ -45,10 +45,3 @@ store:
       path: "/tmp/GoRss2Webhook/data"
       name: "webhook"
       type: "yaml"
-webhook:
-  http:
-    enable: true
-  tgbot:
-    enable: false
-  qwbot:
-    enable: false

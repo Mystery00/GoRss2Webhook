@@ -37,7 +37,12 @@ func (store *memoryStore) Exist(feed gofeed.Feed, item gofeed.Item) bool {
 	if values == nil || len(values) == 0 {
 		return false
 	}
-	checkValue := hash(item.GUID)
+	var checkValue string
+	if item.GUID != "" {
+		checkValue = hash(item.GUID)
+	} else {
+		checkValue = hash(item.Link)
+	}
 	for _, value := range values {
 		if value == checkValue {
 			return true

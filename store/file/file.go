@@ -55,14 +55,24 @@ func writeFile(store fileStore, parent, fileName string, content string) error {
 
 func (store fileStore) Save(feed gofeed.Feed, item gofeed.Item) error {
 	parent := hash(feed.Link)
-	fileName := hash(item.GUID)
+	var fileName string
+	if item.GUID != "" {
+		fileName = hash(item.GUID)
+	} else {
+		fileName = hash(item.Link)
+	}
 	err := writeFile(store, parent, fileName, item.Link)
 	return err
 }
 
 func (store fileStore) Exist(feed gofeed.Feed, item gofeed.Item) bool {
 	parent := hash(feed.Link)
-	fileName := hash(item.GUID)
+	var fileName string
+	if item.GUID != "" {
+		fileName = hash(item.GUID)
+	} else {
+		fileName = hash(item.Link)
+	}
 	return existFile(store, parent, fileName)
 }
 

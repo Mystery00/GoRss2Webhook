@@ -7,7 +7,7 @@ import (
 
 func TestParse(t *testing.T) {
 	subscriber := store.FeedSubscriber{
-		FeedUrl: "https://rsshub.admin.mystery0.vip/coronavirus/dxy",
+		FeedUrl: "https://sspai.com/feed",
 	}
 	parse, err := Parse(subscriber)
 	if err != nil {
